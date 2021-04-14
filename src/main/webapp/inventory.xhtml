@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <div class="p-d-flex">
+        <div class="p-mr-2" style="margin-top: 2em">
+            <!--_________________________________ ADD/REMOVE/SORT STORE ITEM FORM _________________________________-->
+            <h:form>
+                <!-- SORT/REMOVE Item Div -->
+                <div class="p-mr-2">
+                    <p:dataTable id="table" var="inventory" value="#{storeAppBean.inventoryList}"
+                                 allowUnsorting="true" sortMode="single">
+                        <!-- Id Header Column -->
+                        <p:column headerText="ID" field="id" filterable="false" sortOrder="asc">
+                            <h:outputText value="#{inventory.id}"/>
+                        </p:column>
+
+                        <!-- Name Header Column -->
+                        <p:column headerText="Name" field="name" filterable="false" sortOrder="asc">
+                            <h:outputText value="#{inventory.name}"/>
+                        </p:column>
+
+                        <!-- Sport Header Column -->
+                        <p:column headerText="Sport" field="price" filterable="false">
+                            <h:outputText value="#{inventory.sport}"/>
+                        </p:column>
+
+                        <!-- Quantity Header Column -->
+                        <p:column headerText="Quantity" field="quantity" filterable="false">
+                            <h:outputText value="#{inventory.quantity}"/>
+                        </p:column>
+
+                        <!-- Price Header Column -->
+                        <p:column headerText="Unit Price" field="price" filterable="false">
+                            <h:outputText value="$#{inventory.price}"/>
+                        </p:column>
+
+                        <!-- DateUpdated Header Column -->
+                        <p:column headerText="Date" field="dateUpdated" filterable="false">
+                            <h:outputText value="#{inventory.dateUpdated}"/>
+                        </p:column>
+
+                        <!-- Remove Item Event Column -->
+                        <p:column headerText="Remove Item">
+                            <p:commandButton type="submit" actionListener="#{storeAppBean.removeInventory(inventory)}"
+                                             style="margin-right: 20px;" value="Remove Item"
+                                             icon="pi pi-refresh" iconPos="right" validateClient="true" />
+                        </p:column>
+                    </p:dataTable>
+                </div>
+
+                <!--_________________________________ ADD Items _________________________________-->
+                <h2>Inventory</h2>
+                <!-- NAME DIV -->
+                <div class="p-field" style="margin: 2em">
+                    <p:outputLabel for="name" style="margin-right: 3.1em">Name: </p:outputLabel>
+                    <p:inputText id="name" type="text" value="#{storeAppBean.name}">
+                    </p:inputText>
+                    <p:message for="@previous"/>
+                </div>
+                <!-- SPORT DIV -->
+                <div class="p-field" style="margin: 2em">
+                    <p:outputLabel for="sport" style="margin-right: 2.9em">Sport: </p:outputLabel>
+                    <p:inputText id="sport" type="text" value="#{storeAppBean.sport}"/>
+                    <p:message for="@previous"/>
+                </div>
+                <!-- QUANTITY DIV -->
+                <div class="p-field" style="margin: 2em">
+                    <p:outputLabel for="quantity" style="margin-right: 2.9em">Quantity: </p:outputLabel>
+                    <p:inputText id="quantity" type="text" value="#{storeAppBean.quantity}"/>
+                    <p:message for="@previous"/>
+                </div>
+                <!-- PRICE DIV -->
+                <div class="p-field" style="margin: 2em">
+                    <p:outputLabel for="price" style="margin-right: 1em">Price: </p:outputLabel>
+                    <p:inputText id="price" type="text" value="#{storeAppBean.price}"/>
+                    <p:message for="@previous"/>
+                </div>
+                <p:commandButton style="margin: 2em" type="submit" actionListener="#{storeAppBean.addInventory}"
+                                 value="Add Item" icon="pi pi-check" iconPos="right"/>
+                <!--                ajax="false" validateClient="true"-->
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>

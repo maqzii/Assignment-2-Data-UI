@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <div class="card" style="display: flex; justify-content: center">
+        <h2>Store</h2>
+        <h:form>
+            <div class="p-field" style="margin: 2em">
+                <p:outputLabel for="name" style="margin-right: 1em">Store Name: </p:outputLabel>
+                <p:inputText id="name" type="text" value="#{storeAppBean.storeName}"/>
+                <p:message for="@previous"/>
+            </div>
+            <div class="p-field" style="margin: 2em">
+                <p:outputLabel for="location" style="margin-right: 1em">Location: </p:outputLabel>
+                <p:inputText id="location" type="text" value="#{storeAppBean.storeLocation}"/>
+                <p:message for="@previous"/>
+            </div>
+            <div class="p-field" style="margin: 2em">
+                <p:commandButton style="margin: 2em" type="submit" action="#{storeAppBean.createStore}"
+                                 value="Create Store" validateClient="true"
+                                 icon="pi pi-check" iconPos="right"/>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>
